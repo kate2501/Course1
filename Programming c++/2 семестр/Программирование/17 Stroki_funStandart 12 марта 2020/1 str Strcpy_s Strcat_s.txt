@@ -1,0 +1,30 @@
+// Пример 1. Использование стандартных функций strcpy_s(), strcat_s()
+// в программе.
+#include <iostream>
+#include <cstring>
+using namespace std;
+const int buf = 50;
+int main(){
+int  n;
+cout<<"Vvedi max chislo simvolov v stroke == 50: ";
+cin>>n;						// ввести 50  (как размер буфера)!!!
+char * str = new char[n+1];			// выделение памяти для str
+strcpy_s(str, buf, "*****");			// копирование "*****" в str
+cout << "str = " << str << endl;		// *****
+char * str1 = new char[n+1];			// выделение памяти для str1
+strcpy_s(str1, buf, "55555");
+cout << "str1 = " << str1 << endl;		// 55555
+strcpy_s(str, buf, str1);
+cout << "str = " << str << endl;		// 55555
+char str2[] = "77777";
+cout << "str2 = " << str2 << endl;		// 77777
+strcpy_s(str, buf, str2);
+cout << "str = " << str << endl;		// 77777
+cin.ignore();
+cout<<"Vvedi stroku :";
+char str3[buf];
+strcpy_s(str3, buf, "SSSSS");
+cout << "str3 = " << str3 << endl;		// SSSSS
+strcat_s(str3, buf, "TTTTT ");
+cout << "str3 = " << str3 << endl;		// SSSSSTTTTT
+}

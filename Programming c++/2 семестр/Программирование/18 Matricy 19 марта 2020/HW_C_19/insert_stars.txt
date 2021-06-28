@@ -1,0 +1,33 @@
+// Add "***" to the beginning and to the end of the line
+//Belskaya
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void Insert(char *,int);
+
+int main()
+{
+	int n;
+	cout << "Enter the number of elements in your str:" << endl;
+	cin >> n;
+	char *str = new char[n + 7];
+	cout << "Enter your str:" << endl;
+	cin.ignore();
+	gets_s(str, n+1);
+	Insert(str, n);
+	puts(str);
+	delete[] str;
+}
+
+void Insert(char* str, int n)
+{
+	char *tmp = new char[n + 4];
+	strcat_s(str, n + 4, "***");
+	strcpy_s(tmp, n + 4, str);
+	str[0] = '\0';
+	strcpy_s(str, n + 7, "***");
+	strcat_s(str, n + 7, tmp);
+}

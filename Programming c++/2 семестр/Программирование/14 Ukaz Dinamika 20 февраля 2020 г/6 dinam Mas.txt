@@ -1,0 +1,18 @@
+//  Создание динамического одномерного массива.
+// Размер массива вводится.
+#include <iostream>
+using namespace std;
+int main(){
+  int n;
+  cout << "Vvedi kol-vo elementov massiva : ";	cin >> n;
+  int* ptr = new int[n];			// выделение памяти для массива
+  for (int i = 0; i < n; i++)
+    ptr[i] = i + 1;
+  for (int i = 0; i < n; i++)
+    cout << ptr[i] << ' ';
+  cout << endl;
+  for (int* q = ptr; q != ptr + n; q++)
+     cout << *q << " ";
+  cout<<endl;
+  delete [] ptr;
+}

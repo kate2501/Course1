@@ -1,0 +1,29 @@
+// Найти в одномерном массиве среднее арифметическое чисел,
+// отличных от заданного числа num. 
+#include <iostream>
+using namespace std;
+const int DIM = 50;
+int main(){
+   int a[DIM];
+   int n, num,  kol, k;
+   double sredar, sum;
+   cout<<"Enter size massiva n: ";	   cin>>n;
+   cout<<"Enter massiv "<<endl;
+   for(int i = 0; i < n; i++)			// ввод массива
+      cin>>a[i];
+    cout<<"\n\t Massiv a(n)\n";
+    for(int i = 0; i < n; i++)			// вывод массива
+      cout<<a[i] << ' ';
+    cout<<endl;
+    cout<<"Vvedi num ";	cin>>num;		// ввод num
+     sum = 0;     kol = 0;
+     for(int i = 0; i < n; i++)
+         if(a[i] != num) {kol++; sum = sum + a[i];}
+      cout<<" kol = "<<kol<<" sum = "<<sum<<endl; 	// для контроля
+      if(kol == 0) cout<<"No chisel != chislu  num";
+      else{ 
+        sredar = sum / kol;
+        cout<<" sredar = "<<sredar<<endl;
+      }
+   system("pause");
+}

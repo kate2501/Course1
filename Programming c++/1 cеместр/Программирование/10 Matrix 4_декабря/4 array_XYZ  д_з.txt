@@ -1,0 +1,53 @@
+// Даны два массива X[n] и Y[n]. Построить третий массив Z[n]:
+// Составить и использовать следующие функции: 
+// Первая, отличная от void вычисляет для двух простых неиндексированных переменных u и v (а не x[i] y[i]) 
+// r1=min(u,v). Вторая, отличная от void вычисляет для двух простых неиндексированных переменных u и v (а не x[i] y[i])) 
+// r2=max(u,v). Третья с помощью первой функции строит новый массив Z[n] по правилу 
+// z[i] = min(x[i], y[i]), если (x[i] + y[i] >= 2), иначе  z[i] = max(x[i], y[i]).
+// В main() массивы x и y определить  и проверить третью функцию. (постановка Аленского).
+#include <iostream>
+using namespace std;
+void vvodMas(int [], int );
+void vivodMas(int [], int );
+void rezMas(int [], int[], int [], int);	
+int min(int u, int v);
+int max(int u, int v);
+const int DIM = 50; 
+int main(){
+   int x[DIM], y[DIM], z[DIM], n;
+   cout<<"Enter size  n: ";      cin>>n;
+   cout<<"Vvedi massiv X\n";
+   vvodMas(x,  n);
+   cout<<"    Isxodni massiv X\n   ";		// вывод массива
+   vivodMas(x, n); 
+   cout<<"Vvedi massiv Y\n"; 
+   vvodMas(y,  n);
+   cout<<"     Isxodni massiv Y\n   ";		// вывод массива
+   vivodMas(y, n);  
+   rezMas(x, y, z, n);
+   cout<<"\n    Massiv Z\n   ";
+   vivodMas(z, n);  
+   system("pause");
+}
+void vivodMas(int mas[], int n){			// функция вывода массива
+     for(int i = 0; i < n; i++)			
+          cout<<mas[i]<<' ';
+     cout<<endl;
+ }
+void vvodMas(int mas[], int n){
+     for(int i = 0; i < n; i++)
+         cin>>mas[i]; 				// ввод массива
+ }
+int min(int u, int v){
+  if(u < v) return u;
+  else return v;
+}
+int max(int u, int v){
+  if(u > v) return u;
+  else return v;
+}
+void rezMas(int x[], int y[], int z[], int n){
+     for(int i = 0; i < n; i++)
+         if(x[i] + y[i] >= 2) z[i] = min(x[i], y[i]);
+         else z[i] = max(x[i], y[i]);
+}

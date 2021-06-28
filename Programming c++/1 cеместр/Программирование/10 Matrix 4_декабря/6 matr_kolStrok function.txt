@@ -1,0 +1,46 @@
+// —оставить функцию, котора€ определ€ет, есть ли в одномерном
+// массиве отрицательные элементы или нет. 
+//  »спользу€ функцию,  в данной целочисленной матрице matr[n][m] найти
+//  количество строк, в которых нет отрицательных элементов.
+#include <iostream>
+using namespace std;
+int funOtr(int mas[], int n);
+const int DIM1 = 20, DIM2 = 20;
+int main(){
+  int matr[DIM1][DIM2], kol = 0, prizn;
+  int n, m;
+  cout<<"Vvedi n, m: ";   cin>>n>>m;  
+ // cout<<"  Vvedi matrix\n";
+  srand(n + m);
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+     matr[i][j] = rand() % 25 - 5;
+ //       cin>>matr[i][j];
+
+  cout<<"Matrix isxodnaya:  "<<endl;
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
+      cout.width(4); 
+      cout<<matr[i][j];
+    }
+    cout<<endl;
+  }
+  for(int i = 0 ; i < n; i++){
+       prizn = funOtr(matr[i],  m);
+       if (prizn == 1) kol = kol++;
+   }
+   cout<<" kol strok, no otr = "<<kol<<'\n';
+   system("pause");
+}
+ int funOtr(int mas[], int n){  
+     int pr =1;
+     for(int i = 0; i < n; i++)
+           if(mas[i] < 0){pr = 0; break;}
+     return pr;
+ }
+    
+  
+
+
+  
+ 

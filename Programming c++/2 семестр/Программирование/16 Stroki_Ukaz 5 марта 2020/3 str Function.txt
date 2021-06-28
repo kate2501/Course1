@@ -1,0 +1,17 @@
+// Пример 3. Параметр функции – указатель типа char
+// на строковую константу.
+#include <iostream>
+using namespace std;
+#include <cstring>
+void strShow(char *);
+int main(){
+   char str[20];
+   cout << "Vvedi stroku: ";
+   gets_s(str);
+   strShow(str);
+}
+void strShow(char * str){		// функция вывода строки
+  cout<<"str =  ";
+  while(*str) cout<<*str++;		// 123456789
+  cout<<endl;
+}

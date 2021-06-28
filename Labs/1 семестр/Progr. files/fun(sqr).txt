@@ -1,0 +1,22 @@
+//Функция, вычисляющая площадь прямоугольника(квадрата)
+#include "pch.h"
+#include <iostream>
+using namespace std;
+void square(int a,int b=1);
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	square(2, 3);
+	square(2);
+	square(6);
+	square(10, 2);
+	system("pause");
+}
+void square(int a, int b) 
+{
+	if (b==1) 
+	{
+		cout << "Сторона квадрата:" << a<< ".Площадь квадрата:" << a * a << endl;
+	}
+	else cout << "Стороны прямоугольника:" << a<<","<< b << ".Площадь прямоугольника:" << a * b << endl;
+}

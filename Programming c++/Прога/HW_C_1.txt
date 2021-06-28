@@ -1,0 +1,74 @@
+#include "pch.h"
+#include<iostream>
+using namespace std;
+
+int* EnterArray(int&);
+void ShowArray(int *, int);
+bool CheckPrime(int*, int);
+bool CheckOrder(int*, int);
+
+int main()
+{
+	int n,t;
+	cout << "Enter n" << endl;
+	cin >> n;
+	int *myarray = new int[n];
+	EnterArray(n);
+	ShowArray(myarray, n);
+	if (!CheckPrime(myarray, n)&&CheckOrder(myarray, n))
+	{
+		t = 1;
+	}
+	else t = 0;
+	cout << "T=" << t << endl;
+	delete[] myarray;
+}
+
+int* EnterArray(int &n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Enter the element" << endl;
+		cin >> *(myarray + i);
+	}
+	return myarray;
+}
+
+void ShowArray(int *arr, int n)
+{
+	cout << "That is your array" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout<< *(arr + i)<<" ";
+	}
+}
+bool CheckPrime(int *arr, int n)
+{
+	bool flag=true;
+	for (int j = 0; j < n; j++)
+	{
+		for (int i = 2; i <= sqrt(*(arr+j)); i++)
+		{
+			if (*(arr + j) % i == 0)
+			{
+				flag = false;
+				break;
+			}
+			else flag = true;
+		}
+		if (flag) break;
+	}
+	return flag;
+}
+bool CheckOrder(int *arr, int n)
+{
+	for (int i = 0; i < n-1; i++)
+	{
+		if (*(arr + i)>*(arr+i+1))
+		{
+			return false;
+			break;
+		}
+	}
+	return true;
+}

@@ -1,0 +1,80 @@
+#include "pch.h"
+#include<iostream>
+using namespace std;
+
+void EnterArray(int *, int);
+void ShowArray(int *, int);
+bool CheckEvenQ(int);
+int FindSum(int*, int);
+int* FindMax(int*, int);
+int SumEl(int);
+
+int main()
+{
+	int n,sum;
+	cout << "Enter n" << endl;
+	cin >> n;
+	int *myarray = new int[n];
+	EnterArray(myarray,n);
+	ShowArray(myarray, n);
+	sum = FindSum(myarray, n);
+	cout << "The amount of even numbers with even sum of elements: " << sum << endl;
+	delete[] myarray;
+}
+
+void EnterArray(int* myarray,int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Enter the element" << endl;
+		cin >> *(myarray + i);
+	}
+}
+
+void ShowArray(int *arr, int n)
+{
+	cout << "That is your array" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout<< *(arr + i)<<" ";
+	}
+}
+int FindSum(int *arr, int n)
+{
+	int sum = 0;
+	for (int j = 0; j < FindMax(arr,n)-arr; j++)
+	{
+		if (CheckEvenQ(*(arr + j)))
+			if (CheckEvenQ(SumEl(*(arr + j)))) sum++;
+	}
+	return sum;
+}
+bool CheckEvenQ(int n)
+{
+	if(n%2==0) return true;
+	else return false;
+}
+int* FindMax(int *arr, int n)
+{
+	int *p = 0;
+	int max = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(arr + i) > max)
+		{
+			max = *(arr + i);
+			p = arr + i;
+		}
+	}
+	return p;
+}
+int SumEl(int n)
+{
+	int sum = 0;
+	while (n != 0)
+	{
+		sum += n % 10;
+		n /= 10;
+	}
+	return sum;
+}

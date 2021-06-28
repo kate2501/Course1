@@ -1,0 +1,61 @@
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void Insert(char* arr, char* subarr, int pos)
+{
+	int strbuffer = strlen(arr) + strlen(subarr) + 1;
+	char *temp = new char[strbuffer];
+	strcpy_s(temp, strbuffer, arr + pos);
+	arr[pos] = '\0';
+	strcat_s(arr, strbuffer, subarr);
+	strcat_s(arr, strbuffer, temp);
+}
+
+void insert_words(char *str, char* substr)
+{
+	char *q;
+	q = 0;
+	while (1)
+	{
+		q = strstr(str, " ");
+		if (q != 0)
+			if ((q - str) % 2 == 1)
+			{
+				Insert(str, substr, q - str);
+			}
+			else str = q + 1;
+		else break;
+	}
+}
+
+
+int main()
+{
+	int n,k;
+	cout << "Enter n:";
+	cin >> n;
+	cout << "Enter your substr length:";
+	cin >> k;
+	int size = n + k * round(n - 1) / 2 + 2;
+	char *str = new char[size];
+	cin.ignore();
+	cout << "Enter your str:";
+	gets_s(str, n + 1);
+	cout << "Enter your substr:";
+	char *substr = new char[k + 1];
+	gets_s(substr, k + 1);
+	strcat_s(str, size, " ");
+	puts(str);
+	puts(substr);
+	insert_words(str, substr);
+	puts(str);
+	delete[] str;
+	delete[] substr;
+}
+
+
+
+
+

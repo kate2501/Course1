@@ -1,0 +1,45 @@
+// —оставить две функции. ѕерва€ функци€, отлична€ от void, находит
+//  (но не  выводит, а возвращает в mа≥n()) количество чисел одномерного массива
+//  из промежутка [u, v] (массив, его размерность, u, v Ц входные параметры функции).
+// ¬тора€ функци€ типа void с прототипом выводит только числа массива из промежутка [u, v]
+//  в обратном пор€дке (массив, его размерность, u, v Ц входные параметры функции).
+// ¬ main() объ€вить массив, определить его при объ€влении, вызвать первую и вторую 
+// функции  и вывести полученный в первой функции результат (количество чисел массива 
+// из промежут-ка [u, v] или текст " Ќет чисел ", если из функции вернули 0).
+#include <iostream>
+using namespace std;
+
+void vivObratno(int mas[], int n, int u, int v);
+int kolUV(int mas[], int n, int u, int v);
+const int MAS = 40;
+int main(){ 
+     int mas[MAS], n, u, v, kol;
+      cout << "Enter size massiva: ";     cin >> n;
+      cout << "Enter  massiv: ";
+      for (int i = 0; i < n; i++)			// ввод массива
+         cin >> mas[i];
+       cout << "\n\tIsxodni massiv\n";		// вывод массива
+      for (int i = 0; i < n; i++)
+         cout << mas[i] << ' ';
+      cout << endl;
+      cout << "vvedi u,v: ";  cin >> u >> v;
+      kol = kolUV(mas, n, u, v); 
+      cout << " kol = " << kol << endl; 
+      if(kol != 0)			
+         vivObratno(mas, n, u, v);		// если такие числа есть, вызываем функцию вывода			
+       else cout<<" No chisel"<<endl;
+      system("pause");
+}
+int kolUV(int mas[], int n, int u, int v) {
+      int kol = 0;
+      for (int i = 0; i < n; i++)
+          if (mas[i] >= u && mas[i] <= v) kol++;
+      return  kol;
+}
+void vivObratno(int mas[], int n, int u, int v){
+       for (int i = n; i >= 0; i--)
+          if (mas[i] >= u && mas[i] <= v)
+	cout << mas[i] << ' ';
+       cout<<endl;		
+}
+

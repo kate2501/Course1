@@ -1,0 +1,25 @@
+// Пример 1. Использование указателя на тип char.
+#include <iostream>
+using namespace std;
+#include <cstring>
+const int M = 50;
+int main(){
+  char str[M];
+  cout << "Vvedi stroku" << endl;
+  gets_s(str);						// введём 1234567 
+  cout << "isxodnya stroka: " << str << endl;		// 1234567
+  int len = strlen(str);
+  cout<<"len = "<<len<<endl;				// len = 7
+  char * ps = str;
+  cout << ps << endl;					// 1234567
+  cout<<(ps + 2)<<endl;					// 34567
+  cout << str[1] << ' ' << ps[1] << ' ' << endl;	// 2 2
+  ps[1] = '*';						// изменяем элемент
+  cout << "ps = "<<ps << endl;				// 1*34567
+  cout << "str = " << str << endl;			// 1*34567
+  cout<<*(str + 3)<<' '<<*(ps + 3)<<' '<<endl;		// 4 4
+  cout << "str = " << str << endl;			// 1*34567
+ *(ps + 4) = '\0';					// или ps[4] = '\0';
+  cout<<"ps = "<<ps<<endl;				// ps = 1*34
+
+}

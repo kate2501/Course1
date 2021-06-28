@@ -1,0 +1,63 @@
+%Преамбула
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\title{Лабораторная работа №2\\Создание математического текста}
+\author{БГУ,ММФ,1 курс, 5 группа, Бельская Екатерина Артуровна}
+%Тело документа
+\begin{document}
+\maketitle
+\section*{Задание 1. Математические выражения}
+\begin{enumerate}
+	\item 
+	\[\max{\lbrace<c,x>|Ax\leq b,x \in\mathbb{R}^n \rbrace}\]
+	\item 
+	\[ A=B\Leftrightarrow((A\subset B)\wedge(B \subset A))\]
+	\item 
+	\[ F(x)|^{b}_{a}=F(b)-F(a)\]
+	\item Пример выносной формулы с нумерацией и ссылкой на формулу
+	\begin{equation}\label{equ1}
+	X=\mathbb{R}^n \times\mathbb{Z}\times\mathbb{R}^m_-.
+	\end{equation}
+	Смотри формулу (\ref{equ1}).
+	\item
+	\[a_1+a_2+ \ldots+a_k+\ldots=\sum_{k=1}^{\infty}a_k\]
+	\item\[\lim_{\Delta x \rightarrow2}{\frac{f(x+\Delta x)-f(x)}{\Delta x}}=f'(x)\]
+	\item Пример использования окружения {\bf array}
+	\[\Delta =\left| \begin{array}{cc} a_{11} &a_{12}\\a_{21}&a_{22}\end{array}\right|=a_{11}a_{22}-a_{12}a_{21}\]
+	\item Пример использования окружения {\bf array}
+	\[f(x)=\left\{\begin{array}{lr}\sin(\alpha x),&\mbox{если } x < 0 \\ \tg(\beta x),&\mbox{если } x>0\end{array}\right. \]
+
+
+	\item Пример использования окружения {\bf eqnarray}
+\begin{eqnarray}
+\gamma^{2}+\chi\alpha&=&\beta\\
+\phi+\eta&=&\pi
+\end{eqnarray}
+\item Пример использования окружения {\bf eqnarray}
+\begin{eqnarray}
+h(x)&=&\int^{\pi}_0\sin{x}\,dx\\
+&=&2 \nonumber.
+\end{eqnarray}
+\end{enumerate}
+\section*{Задание 2. Математический текст}
+В математическом анализе исходят из определения функции по Лобачевскому и Дирихле. Если каждому числу $x$ из некоторого множества $F$ чисел в силу какого-либо закона приведено в соответствие число $y$, то этим определена функция \[y=f(x)\] от одного переменного $x$. Аналогично определяется функция \[f(x)=f(x_1,\ldots,x_n)\] от $n$ переменных, где $x=(x_1,\ldots,x_n)$ --- точка $n$-мерного пространства; рассматриваются также функции \[f(x)=f(x_1,x_2,\ldots)\] от точек $x=(x_1,\ldots,x_n)$ некоторого бесконечномерного пространства, которые, впрочем, чаще называют функционалами \cite{Vinogradov}.
+\section*{Задание 3. Математический текст}
+\newtheorem{theorem}{Теорема}[section]\begin{theorem}[Критерий Коши]Последовательность $(x_n)^\infty_{n=1}$ сходится в $\mathbb{R}$ ,если и только если она фундаментальна.\end{theorem}
+\begin{proof}$\Rightarrow$ Предположим, что последовательность $(x_n)^\infty_{n=1}$ сходится в $\mathbb{R}$, т. е. $\lim_{n\rightarrow \infty}=a\in\mathbb{R}$. По определению, это значит, что \begin{equation}\label{equ2}\forall\varepsilon\in\mathbb{R}_+ \quad \exists n_\varepsilon\in\mathbb{N}\quad\forall n\geqslant n_\varepsilon: |x_n-a|\leqslant\frac{\varepsilon}{2}.\end{equation} Заменим $n$ на $m$ и получим \[\forall\varepsilon\in\mathbb{R}_+ \quad \exists n_\varepsilon\in\mathbb{N}\quad\forall m\geqslant n_\varepsilon: |x_m-a|\leqslant\frac{\varepsilon}{2}.\] Используя данные неравенства проведём оценку выражения \[|x_n-x_m|=|(x_n-a)-(a-x_m)|\leqslant|x_n-a|+|a-x_m|\leqslant\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon,\]т. е. данная последовательность является фундаментальной.
+
+$\Leftarrow$ Теперь предположим, что исходная последовательность является фундаментальной, тогда необходимо доказать, что $\lim\limits_{n\rightarrow \infty}=a\in\mathbb{R}$. Полагая, что в условии (\ref{equ2}) $m=n_\varepsilon$, будем иметь $|x_n-x_{n_\varepsilon}|\leqslant\frac{\varepsilon}{2}$, что равносильно такому условию: \[\forall n\geqslant n_\varepsilon: x_{n_\varepsilon}-\varepsilon\leqslant x_n\leqslant x_{n_\varepsilon}+\varepsilon\] или \[X_n=\{x_n, x_{n+1},\ldots\}\subset [x_{n_\varepsilon}-\varepsilon,x_{n_\varepsilon}+\varepsilon],\] и, значит, \[x_{n_\varepsilon}-\varepsilon\leqslant \inf{X_n}\leqslant \sup{X_n}\leqslant x_{n_\varepsilon}+\varepsilon.\] Переходя здесь к пределу при $n\rightarrow\infty$, получим \begin{equation}\label{equ3}x_{n_\varepsilon}-\varepsilon\leqslant \varliminf_{n\rightarrow \infty}x_n\leqslant \varlimsup_{n\rightarrow \infty}x_n\leqslant x_{n_\varepsilon}+\varepsilon.\end{equation} Из этих неравенств следует что, \[0\leqslant \varliminf_{n\rightarrow \infty}x_n-\varlimsup_{n\rightarrow \infty}x_n\leqslant 2\varepsilon.\] Переходя здесь к пределу при $\varepsilon \rightarrow +0$, видим, что $\varliminf\limits_{n\rightarrow \infty}x_n=\varlimsup\limits_{n\rightarrow \infty}x_n$. Поэтому на основании уже известных теорем заключаем, что предел $\lim\limits_{n\rightarrow \infty}$ существует, а из неравенств (\ref{equ3}) следует, что этот предел --- число \cite{Lecture}.
+\end{proof}
+\begin{thebibliography}{7}
+\bibitem{Otiker} Отикер~Т. Не очень краткое введение в LaTeX 2е (перевод Б. Тоботрас) --- 2003.
+\bibitem{Kotelnikov} Котельников И. А., Чеботаев П. З. LaTeX по-русски (3-е изд.) ---Новосибирск: Сибирский хронограф, 2004.
+\bibitem{Vinogradov} Математическая энциклопедия / Гл. ред. И. М. Виноградов. --- М.: Советская Энциклопедия. т. 3 Коо-Од. 1982.
+\bibitem{Lecture} Конспект по матматическому анализу, 1 сем.
+\end{thebibliography}
+
+\end{document}

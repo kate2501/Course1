@@ -1,0 +1,77 @@
+include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void delete_function(char* s, int pos, int n)
+{
+	int size = strlen(s) + 1;
+	char* temp = new char[strlen(s) + 1];
+	strcpy_s(temp, size, s + pos + n);
+	s[pos] = '\0';
+	strcat_s(s, size, temp);
+}
+
+int delete_words(char *str)
+{
+	char *q;
+	q = 0;
+	int s = 0;
+	while (1)
+	{
+		q = strstr(str, " ");
+		if (q != 0)
+			if ((q - str) % 2 == 0)
+			{
+				delete_function(str, 0, q - str + 1);
+				s++;
+			}
+			else str = q + 1;
+		else break;
+	}
+	return s;
+}
+
+void Sort(char **arr, int n)
+{
+	bool exit = false;
+	while (!exit) // пока массив не отсортирован
+	{
+		exit = true;
+		for (int i = 0; i < n - 1; i++)
+			if (delete_words(arr[i]) > delete_words(arr[i + 1])) 
+			{
+				char* p = arr[i];		
+				arr[i] = arr[i+1];	
+				arr[i+1] = p;
+				exit = false; 
+			}
+	}
+}
+
+int main()
+{
+	int n, m;
+	cout << "Enter n, m:";
+	cin >> n >> m;
+	char ** p = new char*[n];
+	cin.ignore();
+	for (int i = 0; i < n; i++)
+	{
+		p[i] = new char[m + 2];
+		cout << "Enter your str:" << endl;
+		gets_s(p[i], m + 1);
+		strcat_s(p[i], m + 2, " ");
+	}
+	Sort(p, n);
+	cout << "Your matrix:  " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		puts(p[i]);
+	}
+	cout << endl;
+
+	for (int i = 0; i < n; i++)
+		delete[] p[i];
+	delete[] p;
+}

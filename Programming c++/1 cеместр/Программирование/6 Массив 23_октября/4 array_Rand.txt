@@ -1,0 +1,27 @@
+// Заполнение одномерного массива случайным образом и вывод 
+// его на экран. Использование функций rand(), srand(n).
+#include <iostream>
+using namespace std;
+const int DIM = 50;
+int main(){
+   int a[DIM],  n;
+   while(true){				// проверка корректности ввода n
+      system("cls");				// очистить экран
+      cout<<"Enter n: "; 	cin >> n;
+      if(n > 1 && n < DIM) break;
+      cout<<"Nocorrect n\n";
+   }
+   srand(n);					// для получения разных чисел
+   cout<<"\n\t 1___Massiv a(n)\n";
+   for(int i = 0; i <  n; i++)
+      a[i] = rand() % 6 + 1;			// числа от 1 до 6
+   for(int i = 0; i <  n; i++)
+    cout<<a[i] << ' ';
+   cout<<"\n\t 2___ Massiv a(n)\n";
+  for(int i = 1; i <= 25; i++){
+     cout.width(3);
+     cout<<rand() % 6 + 1;
+     if(i % 5 == 0)cout<<endl;		  	// вывод по 5 чисел в строке
+   }
+   system("pause");
+}

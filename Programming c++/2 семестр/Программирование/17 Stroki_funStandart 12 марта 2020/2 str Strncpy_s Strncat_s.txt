@@ -1,0 +1,31 @@
+// Пример 2. Использование стандартных функций strncpy_s(), strncat_s()
+// strchr(), strcmp() в программе.
+#include <iostream>
+#include <cstring>
+using namespace std;
+const int buf = 50;
+int main(){
+int  n;
+cout<<"Vvedi max chislo simvolov v stroke == 50: ";
+cin>>n;						// 50
+char * str = new char[n+1];			// выделение памяти для str
+strncpy_s(str, buf, "*****", 3);		// копирование "***" в str
+cout << "str = " << str << endl;		// ***
+//----------------------------------------------------------------------------------
+strncat_s(str, buf, "55555", 3);
+cout << "str = " << str << endl;		// ***555
+//------------------------------------------------------------------------------------
+char* str1 = new char[n + 1];
+strcpy_s(str1, n, "11 + 22 + 33");
+char* p;
+p = strchr(str1, '+');			// p указывает на подстроку "+ 22"
+cout << p << endl;			// + 22 +33
+p = strrchr(str1, '+');			// p указывает на подстроку "+ 33"
+cout << p << endl;			// + 33
+//------------------------------------------------------------------------------------
+char* str2 = new char[n + 1];
+strcpy_s(str2, buf, "abc");			// str2 = abc
+char* str3 = new char[n + 1];
+strcpy_s(str3, buf, "abc");			// str3 = abc
+cout<< strcmp(str2, str3)<<endl;		// 0
+}

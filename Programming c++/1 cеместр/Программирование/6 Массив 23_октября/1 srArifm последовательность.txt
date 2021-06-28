@@ -1,0 +1,27 @@
+// Найти в каждом числе последовательности среднее арифметическое цифр,
+// отличных от заданной цифры k. 
+#include <iostream>
+using namespace std;
+int main(){
+   int n, num, cifra, kol, k;
+   double sredar, sum;
+   cout<<"\n Enter cifru k: ";	 cin>>k;			// ввод цифры
+   while(1){
+     cout <<"Enter the natural number: ";     cin >>n;		// ввод числа
+      if(n == 0)break;
+      num = n;
+      sum = 0;     kol = 0;
+      while(num){
+          cifra = num % 10;  				// выделение цифры
+          if(cifra != k){ kol++; sum = sum + cifra;}
+          num = num / 10; 
+       }
+       cout<<" kol = "<<kol<<" sum = "<<sum<<endl; 		// для контроля
+       if(kol == 0) cout<<"No cifr != cifre k";
+       else {
+          sredar = sum / kol;
+          cout<<" sredar = "<<sredar<<endl;
+       }
+   }
+	system("pause");
+}

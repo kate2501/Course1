@@ -1,0 +1,32 @@
+// Пример 7. Использование функций для вывода строки и
+// преобразования символов строки к верхнему регистру.
+#include <iostream>
+using namespace std;
+#include <cstring>
+void strShow(char *);					// функция вывода строки
+void strUpper(char *);					// функция преобразования символов
+int main(){
+  int n;
+  cout<<"Vvedi max chislo simvolov v stroke:";	  cin>>n;
+  char * ps = new char [n+1];
+  cin.ignore();
+  cout<<"vvedi stroku < "<<n<<" simvolov:";		// aSdDfgF
+  gets_s(ps, n+1);
+  strShow(ps);
+  strUpper(ps);
+  cout<<"\nrezult: "<<ps<<endl;				// ASDDFG
+  delete [] ps;
+}
+void strShow(char * str){			// функция вывода строки
+  cout<<"str =  ";
+  while(*str) cout<<*str++;
+  cout<<endl;
+}
+void strUpper(char * str){			// функция преобразования
+  int i = 0;					// символов строки в верхний регистр
+  while(str[i]){
+    if(str[i] >= 'a' && str[i] <= 'z') str[i] = str[i] - 32;
+    i++; 
+  }
+}
+

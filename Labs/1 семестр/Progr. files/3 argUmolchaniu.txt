@@ -1,0 +1,16 @@
+// Использование аргументов по умолчанию.
+# include <iostream>
+using namespace std;
+void line(char simv = '*', int n = 30);
+ int main(){
+   line();				// вывод символа '*' 30 раз
+   line('=');				// вывод символа '=' 30 раз
+   line('+', 40); 			// вывод символа '+' 40 раз
+   system("pause");
+}
+void line(char simv, int n){
+  cout << "function line()\n";
+   for(int j = 1; j <= n; j++)
+      cout<<simv;
+   cout<<endl;
+}

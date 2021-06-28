@@ -1,0 +1,56 @@
+#include "pch.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+const int DIM1 = 20, DIM2 = 20;
+int FindMaxIndex(int [],int);
+int main()
+{
+
+	int matr[DIM1][DIM2], kol = 0;
+	int z[DIM1];
+	int n, m;
+	cout << "Vvedi n, m: ";   cin >> n >> m;
+	srand(n + m);
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			   matr[i][j] = rand() % 25 - 10;
+			
+	cout << "Matrix isxodnaya:  " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++) {
+			cout.width(4);
+			cout << matr[i][j];
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) 
+	{
+		z[i] = FindMaxIndex(matr[i],m);
+		for (int j = 0; j < m; j++) {
+			cout.width(4);
+			cout << matr[i][j];
+		}
+		cout << setw(15) << z[i]<<" "<<matr[z[i]] << endl;
+	}
+}
+int FindMaxIndex(int mas[], int n)
+{
+	int vid = 0xF;
+	int max = 0;
+	int imax;
+	for (int i = 0; i < n; i++)
+	{
+		int cifra=0;
+		int k = 0;
+		for (int j = 1; j <= 8; j++)
+		{
+			cifra = mas[i] & vid;
+			if (cifra ) k++;
+		}
+		if (k > max) imax = k;
+	}
+	return imax;
+}

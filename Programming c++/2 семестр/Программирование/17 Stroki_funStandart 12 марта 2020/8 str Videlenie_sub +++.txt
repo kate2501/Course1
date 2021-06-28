@@ -1,0 +1,25 @@
+// Пример 8. Выделение подстроки в строке. Вариант первый.
+// Не обязательно!!!
+void subVid(char*, char*, int, int);		// проверено 1.2.2020 г.
+int main() {
+	int n;
+	cout << " Vvedi max chislo simvolov v stroke: ";		cin >> n;
+	char* str = new char[n + 1];
+	char* sub = new char[n + 1];
+	cin.ignore();
+	cout << "Vvedi stroku :";
+	gets_s(str, n+1);
+	cout << "str = " << str << endl;
+	subVid(str, sub, 2, 4);		// с str[2] символа, выделили 4 символа
+	cout << "main: sub =  " << sub << endl;
+	cout << "main: str = " << str << endl;
+	delete[] str;
+	delete[] sub;
+}
+void subVid(char* s, char* sub, int nach, int kol) {
+	cout << "s = " << s << endl;
+	int sizebuf = strlen(s) + 1;
+	cout << "sizebuf = " << sizebuf << endl;
+	strncpy_s(sub, sizebuf, s + nach, kol);
+	cout << "sub =  " << sub << endl;
+}

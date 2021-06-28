@@ -1,0 +1,26 @@
+// Пример 8. Определить, есть ли в строке заданный символ.
+// Оформить в виде функции.
+#include <iostream>
+#include <cstring>
+using namespace std;
+int poisk(char* str, char c);
+int main(){
+  char * st, c;
+  int p, n;
+  cout<<"Vvedi max chislo simvolov v stroke: ";	cin>>n;
+  st = new char[n+1];
+  cin.ignore();						// чистим поток
+  cout<<"Vvedi stroku :";	gets_s(st, n+1);	// asdfgh
+  cout << "st = " << st << endl;
+  cout<<"Vvedi simvol:";	cin>>c;			// f
+  p = poisk(st, c);
+  if(p) cout<<"Yes"<<endl;				// Yes
+  else cout<<"No simvola"<<endl;
+  delete [] st;
+}
+int poisk(char* str, char c){				// функция поиска символа
+  int pr = 0;
+  while (*str)
+  if((*str++) == c){pr = 1; break;}
+  return pr;
+}

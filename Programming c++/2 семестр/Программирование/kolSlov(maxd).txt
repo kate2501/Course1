@@ -1,0 +1,51 @@
+//Дана строка 
+//Сколько слов максимальной длины за один просмотр
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int search (char*, int);
+int main()
+{
+	char * st;
+	int n,p,len;
+	cout << "Enter the number of symbols: ";
+	cin >> n;
+	st = new char[n + 1];
+	cin.ignore();						
+	cout << "Enter the text:";	
+	gets_s(st, n + 1);	
+	len = strlen(st);
+	cout << "st = " << st <<"."<< endl;
+	p = search(st, len);
+	cout << "The amount of words: " << p << endl;
+	delete[] st;
+}
+int search(char *str,int n )
+{
+	int max = 0;
+	int quant = 0;
+	int amount = 0;
+	bool flag = false;
+	for (int i = 0; i <n; i++)
+	{
+		if (str[i] != ' ')
+		{
+			quant++;
+			if (quant > max)
+			{
+				max = quant; 
+				flag = true; 
+				amount = 0;
+			}
+		}
+		else
+		{ 
+			if(flag || quant==max) { amount++; flag = false; }
+			quant = 0;
+		}
+	}
+	if (quant == max) amount++;
+	return amount;
+}

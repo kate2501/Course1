@@ -1,0 +1,14 @@
+//  Использование константных аргументов.
+#include <iostream>
+using namespace std;
+void fun(int& x, const int& y);
+int main(){
+   int a = 5;
+   int b = 10;
+   fun(a, b);
+   system("pause");
+}
+void fun(int& x, const int& y){
+   x = 7;					 // корректно
+//   y = 100;				// ошибка !!!!
+}

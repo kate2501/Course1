@@ -1,0 +1,45 @@
+//-дана строка, удалить все слова чЄтной длины, использу€ стандартные функции или указатели
+//Belskaya
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void delete_function(char*, int, int);
+
+int main()
+{
+	char * st, *q;
+	int n;
+	cout << "Enter the number of symbols: ";
+	cin >> n;
+	st = new char[n + 2];
+	cin.ignore();
+	cout << "Enter the text:";
+	gets_s(st, n + 1);
+	strcat_s(st, n + 2, " ");
+	char *p = st;
+	puts(st);
+	while (1)
+	{
+		q = strstr(p, " ");
+		if (q != 0)
+			if ((q - p) % 2 == 0)
+				delete_function(p, 0, q - p + 1);
+			else p = q + 1;
+		else break;
+	}
+	puts(p);
+	puts(st);
+	delete[] st;
+}
+
+
+void delete_function(char* s, int pos, int n)
+{
+	int size = strlen(s) + 1;
+	char* temp = new char[strlen(s) + 1];
+	strcpy_s(temp, size, s + pos + n);
+	s[pos] = '\0';
+	strcat_s(s, size, temp);
+}

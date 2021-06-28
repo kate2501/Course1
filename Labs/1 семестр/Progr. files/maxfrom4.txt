@@ -1,0 +1,83 @@
+﻿#include "pch.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	int a, b, c, d, min1, min2, max1, max2;
+	cout << "Vvedite a, b, c, d" << endl;
+	cin >> a >> b >> c >> d;
+	if (a < b)
+	{
+		min1 = a;
+		max1 = b;
+	}
+	else
+	{
+		min1 = b;
+		max1 = a;
+	}
+	if (c < d)
+	{
+		min2 = c;
+		max2 = d;
+	}
+	else
+	{
+		min2 = d;
+		max2 = c;
+	}
+	if (min1 > min2)
+	{
+		if (min1 > max2)
+			cout << min2 << " " << max2 << " " << min1 << " " << max1;
+		else
+		{
+			if (max1 > max2)
+				cout << min2 << " " << min1 << " " << max2 << " " << max1;
+			else cout << min2 << " " << min1 << " " << max1 << " " << max2;
+		}
+	}
+	else
+	{
+		if (min2 > max1)
+			cout << min1 << " " << max1 << " " << min2 << " " << max2;
+		else
+		{
+			if (max1 > max2)
+				cout << min1 << " " << min2 << " " << max2 << " " << max1;
+			else cout << min1 << " " << min2 << " " << max1 << " " << max2;
+		}
+	}
+	
+
+	/*
+	int rab;
+	if(a>b)
+	{
+	rab=a; a=b; b=rab;
+	}
+	if(b>c)
+	{
+	rab=b; b=c; c=rab;
+	}
+	if(c>d)
+	{
+	rab=c; c=d; d=rab;
+	}
+	if(a>b)
+	{
+	rab=a; a=b; b=rab;
+	}
+	if(b>c)
+	{
+	rab=b; b=c; c=rab;
+	}
+	if(a>b)
+	{
+	rab=a; a=b; b=rab;
+	}
+	cout<<a<<b<<c<<d;
+	*/
+}

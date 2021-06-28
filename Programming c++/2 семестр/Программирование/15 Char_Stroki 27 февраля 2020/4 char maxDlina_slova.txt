@@ -1,0 +1,21 @@
+// Пример 4. Найти максимальную длину слова в строке.
+#include <iostream>
+#include <cstring>
+using namespace std;
+const int M = 50;
+int main(){
+   char str[M];
+   int kol = 0,  maxlen = 0, len;
+   cout<<"Vvedi stroku: ";
+   gets_s(str);
+   len = strlen(str);
+   for(int i=0; i < len; i++){
+      if(str[i] != ' ')
+      {
+        kol++;
+        if(kol > maxlen) maxlen = kol;
+      }
+      else kol = 0;
+    }
+    cout<<"max dlina slova = "<<maxlen<<endl;
+}

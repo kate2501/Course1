@@ -1,0 +1,30 @@
+// Ввести число. Если число простое, найти его младшую цифру.
+// Использовать две  функции.
+#include <iostream>
+using namespace std;
+int prost(int x);
+int mlCifra(int x);
+ int main(){
+     int n, pr, cifra;
+     cout<<"Vvedi chislo: ";  cin>>n;
+     pr = prost(n);
+     if(pr == 1){
+        cifra = mlCifra(n);
+        cout<<n<<" - chislo prostoe. cifra = "<<cifra<<endl;
+      }
+      else
+         cout<<n<<" - chislo no prostoe"<<endl;
+     system("pause");
+ }
+ int prost(int x){		// функция prost() определяет, простое число или нет
+ int k = x / 2;
+ int flag = 1;
+ for(int j = 2; j <=k; j++)
+   if(x % j == 0){flag = 0 ; break;}
+  return flag;
+}
+int mlCifra(int x){		// функция cifra() находит младшую цифру
+ int c;
+ c = x % 10;
+  return c;
+}

@@ -1,0 +1,47 @@
+//  Одномерный целочисленный массив ввести или проинициализировать
+// случайным образом. Вывести массив. Составить 3 функции.
+// 1) Функцию ввода массива. 2) Функцию вывода массива.
+// 3) Функцию обмена местами минимального и максимального элементов массива. 
+  
+#include <iostream>
+using namespace std;
+void funVvod(int mas[], int n);
+void funVivod(int mas[], int n);
+void funObmen(int mas[], int n);
+const int DIM = 50;
+int main(){
+     int a[DIM]; int n;
+     cout<<"Enter size massiva: ";	cin>>n;
+     funVvod(a, n);
+     funVivod(a, n);
+     funObmen(a, n);
+     funVivod(a, n);
+    system("pause");
+}
+void funVvod(int mas[], int n){
+     cout<<"\n ***funVvod***"<<endl;
+      srand(n);
+   //  cout<<"\n\tVvedi isxodni massiv \n";
+     for(int i = 0; i < n; i++)
+         mas[i] = rand() % 15 - rand() % 10; 		// заполнение массива случайными числами
+  // cin>>a[i]; 				// ввод массива
+ }
+void funVivod(int mas[], int n){
+   cout<<"\n ***funVivod***"<<endl;
+   cout<<"\tMassiv \n";
+   for(int i = 0; i < n; i++)			// вывод массива
+          cout<<mas[i]<<' ';
+     cout<<endl;
+ }
+void funObmen(int mas[], int n){
+   cout<<"\n ***funObmen***"<<endl;
+   int  max = mas[0], min = mas[0];		// поиск максимального и
+   int  imax = 0, imin = 0;			// минимального элементов массива
+   for(int i = 0; i < n ; i++){			// и их индексов
+       if(mas[i] < min){min = mas[i]; imin = i;}
+       if(mas[i] > max){max = mas[i]; imax = i;}
+    }
+   cout<<" max = "<<max<<"  imax = "<<imax<<endl;		// для контроля
+   cout<<" min = "<<min<<" imin = "<<imin<<endl;
+   mas[imin] = max; mas[imax] = min;
+ }

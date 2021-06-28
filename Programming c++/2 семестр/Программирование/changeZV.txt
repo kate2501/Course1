@@ -1,0 +1,41 @@
+//В строке слова в круглых скобках заменить на *-ки
+//111(222)3-> 111(***)3
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void Change(char*, int);
+
+int main()
+{
+	char * st;
+	int n, p, len;
+	cout << "Enter the number of symbols: ";
+	cin >> n;
+	st = new char[n + 1];
+	cin.ignore();
+	cout << "Enter the text:";
+	gets_s(st, n + 1);
+	len = strlen(st);
+	Change(st, len);
+	delete[] st;
+}
+
+
+void Change(char* arr, int n)
+{
+	for (int i = 0; i < n-1; i++)
+	{
+		if (arr[i] == '(')
+		{
+			while (arr[i + 1] != ')')
+			{
+				arr[i + 1] = '*';
+				i++;
+			}
+			break;
+		}
+	}
+	cout << arr;
+}

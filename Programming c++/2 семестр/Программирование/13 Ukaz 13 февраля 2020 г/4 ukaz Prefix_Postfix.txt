@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+main(){
+    int x = 5; int * p = &x;
+    cout<<"0-------";
+    cout<<x <<' '<<*p <<' '<<endl;;		// 5	5
+    cout<<"1-------";
+    cout<<*p++ <<' ';				// 5
+    cout<<x<<"     "<<*p <<endl;		// 5	неоп. значение
+    p = &x;
+    cout<<"2-------";
+    cout<<*(p++) <<' ';				// 5
+    cout<<x<<"     "<<*p <<endl;		// 5	неоп. значение
+    p = &x;
+    cout<<"3-------";
+    cout<<(*p)++ <<' ';				// 5
+    cout<<x<<"     "<<*p <<endl;		// 6	6
+    x = 5; p = &x;
+    cout<<"4-------";
+    cout<<++*p <<' ';				// 6
+    cout<<x<<"     "<<*p <<endl;		// 6	6
+    x = 5; p = &x;
+    cout<<"5-------";
+    cout<<++(*p) <<' ';				// 6
+    cout<<x<<"     "<<*p <<endl;		// 6	6
+    x = 5; p = &x;
+    cout<<"6-------";
+    cout<<*++p <<' ';				// неоп. значение
+    cout<<x<<' '<<*p <<endl;			// 5	неоп. Значение
+}

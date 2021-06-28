@@ -1,0 +1,47 @@
+//Составить 2 функции:
+//Первая, встроенная, отличная от void, для одного целого десятичного числа(а не для индексированной переменной)
+//находит количнство единиц в его двоичном представлении.
+//Во второй функции типа void с прототипом с помощью первой функции в одномерном массиве найти число с наибольши количеством
+//единиц в двоичном представлении(одно, любое, если так чисел несколько) и наибольшее количество единиц.
+//В main() объявить массив, определить его при объявлении с помощью констант, вызвать вторую функцию и вывести полученные с её помощью результаты.
+//Бельская Екатерина 5 группа
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+const int DIM = 40;
+int maxQuant(int num);
+void search(int mas[], int n, int &kol, int &num);
+int main()
+{
+	int x[DIM], n;
+	int quantity = 0, number = 0;
+	cout << "Enter arrays size: ";	cin >> n;
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "Enter array number: ";	cin >> x[i];
+	}
+	cout << "\nYours array:" << endl;
+	for (int i = 0; i < n; i++)
+	    cout << x[i] << ' ';
+	cout << endl;
+	search(x, n, quantity, number);
+	cout << "Number with max quantity of 1:" << number << "; " << "The quantity of 1 in it:" << quantity << endl;
+	system("pause");
+}
+int maxQuant(int num)
+{
+	int sum = 0;
+	while (num)
+	{
+		if (num % 2 == 1) sum++;
+		num = num / 2;
+	}
+	return sum;
+}
+void search(int mas[], int n, int &kol, int &num)
+{
+	for (int i = 0; i < n; i++)
+		if (maxQuant(mas[i]) > kol) { kol = maxQuant(mas[i]); num = mas[i]; }
+}

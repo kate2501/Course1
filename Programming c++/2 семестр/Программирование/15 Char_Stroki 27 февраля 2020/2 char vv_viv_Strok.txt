@@ -1,0 +1,23 @@
+﻿// Пример 2 Ввод/вывод строк.
+#include <iostream>
+using namespace std;
+
+const int MAX = 40;
+int main() 
+{
+	char str[MAX];
+	cout << " Vvedi stroku: ";
+	cin.get(str, MAX);			// введём 111 2222 функция потока cin(так cin вводит только до пробела)
+	cout << "str = " << str << endl;		// 111 2222
+	cin.ignore(); // чистит поток
+	cout << " Vvedi stroku: ";
+	cin.getline(str, MAX);		// введём 5555 6666 можно вводить несколько строк до *-символ ограничитель
+	cout << "str = " << str << endl;		// 5555 6666
+	cout << " Vvedi stroku: ";
+	cin.getline(str, MAX, '*');		// 22вв  333вв*  (вв – это нажать Enter)
+	cout << "str = " << str << endl;
+	cin.ignore();
+	cout << " Vvedi stroku: ";
+	cin.get(str, MAX, '*');		// 555вв  666вв*
+	cout << "str = " << str << endl;
+}

@@ -1,0 +1,31 @@
+//  Дан одномерный целочисленный массив a[n]. Ввести массив или 
+// проинициализировать случайным образом. Вывести массив. 
+// Составить  функцию  нахождения индекса максимального элемента в массиве.
+ 
+#include <iostream>
+using namespace std;
+int funMax(int mas[], int n);
+const int DIM = 50;
+int main(){
+     int a[DIM]; int n, index;
+     cout<<"Enter size massiva: ";	cin>>n;
+     srand(n);
+   //  cout<<"\n\tVvedi isxodni massiv \n";
+     for(int i = 0; i < n; i++)
+         a[i] = rand() % 15 - rand() % 10; 		// заполнение массива
+  // cin>>a[i]; 
+     cout<<"\n\tIsxodni massiv \n";
+     for(int i = 0; i < n; i++)			// вывод массива
+          cout<<a[i]<<' ';
+     cout<<endl;
+     index = funMax(a, n);			// индекс максимального элемента
+     cout<<" max = "<<a[index]<<"\t imax = "<<index<<endl;
+     system("pause");
+}
+int funMax(int mas[], int n){
+     cout<<"\n ***funMax***"<<endl;
+     int  max = mas[0]; int  imax = 0;		// поиск максимального 
+     for(int i = 0; i < n ; i++)			// элемента  и его индекса
+         if(mas[i] > max){max = mas[i]; imax = i;}
+     return imax;
+}

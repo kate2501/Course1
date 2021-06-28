@@ -1,0 +1,55 @@
+// Составить функцию, которая в одномерном массиве находит количество элементов,
+// принадлежащих заданному промежутку [u, v]. Прототип функции – kolUV(int a[], int n, int u, int v);
+// В main(), используя функцию, в каждой строке матрицы найти количество элементов, 
+// принадлежащих заданному промежутку [u, v]. 
+// 1 вариант. Вывести матрицу и справа после каждой строки вывести найденное количество для строки.
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int kolUV(int mas[], int n, int u, int v);
+const int DIM1 = 20, DIM2 = 20;
+int main(){
+  int matr[DIM1][DIM2], kol, u, v;
+  int n, m;
+  cout<<"Vvedi n, m: ";   cin>>n>>m;  
+ cout<<"  Vvedi matrix\n";
+//  srand(n + m);
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < m; j++)
+//     matr[i][j] = rand() % 25 - 5;
+       cin>>matr[i][j];
+
+  cout<<"Matrix isxodnaya:  "<<endl;
+  for(int i = 0; i < n; i++){
+    for(int j = 0; j < m; j++){
+      cout.width(4); 
+      cout<<matr[i][j];
+    }
+    cout<<endl;
+  }
+      cout << "vvedi u,v: ";  cin >> u >> v;
+
+     cout<<setw(10)<<" Matrix   "<<setw(30)<<" Kol = "<<endl;
+     for(int i = 0 ; i < n; i++){
+         kol = kolUV(matr[i], m, u, v);
+         for(int j = 0; j < m; j++){
+             cout.width(4); 
+             cout<<matr[i][j];
+          } 
+          cout << setw(15) << kol << endl; 
+      }
+     system("pause");
+}
+int kolUV(int mas[], int m, int u, int v) {
+      int kol = 0;
+      for (int i = 0; i < m; i++)
+          if (mas[i] >= u && mas[i] <= v) kol++;
+      return  kol;
+}
+
+
+
+
+	

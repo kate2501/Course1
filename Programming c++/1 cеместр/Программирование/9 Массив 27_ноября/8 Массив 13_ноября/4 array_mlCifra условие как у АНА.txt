@@ -1,0 +1,38 @@
+// Составить две функции. Первая, встроенная, отличная от void, для одного целого
+// десятичного числа u (а не индексированной переменной) находит младшую цифру
+// (2035->5). Во второй функции типа void c прототипом, используя первую функцию, 
+// в одномерном массиве найти число с наибольшей младшей цифрой (одно, любое, если 
+// таких чисел несколько) и наибольшую цифру. В main() объявить массив, ввести его, 
+//  вывести, вызвать вторую функцию и вывести полученные с её помощью результаты.
+
+#include <iostream>
+using namespace std;
+void funArray(int mas[], int n, int& index, int& max); 	    // прототип функции
+int mlCifra(int x){				    // функция mlCifra() находит младшую цифру
+    int c;
+    c = x % 10;
+    return c;
+}
+const int DIM = 40;  
+int main(){
+   int mas[DIM]; int n, maxCifra, index;
+   cout<<"Enter size massiva: ";	cin>>n;
+   cout<<"Enter  massiv: ";	
+   for(int i = 0; i < n; i++)		// ввод массива
+       cin>>mas[i];
+   cout<<"\n\tIsxodni massiv\n";		// вывод массива
+   for(int i = 0; i < n; i++)
+        cout<<mas[i]<< ' ';
+   cout<<endl;
+    funArray(mas, n, index, maxCifra);
+    cout<<mas[index]<<" - chislo"<<" max mlCifra = "<<maxCifra<<endl;
+    system("pause");
+  }
+void funArray(int a[], int n,  int& ind, int& maxCifra){
+     int cifra = 0;
+      maxCifra = 0,   ind = 0;		
+     for(int i = 0; i < n ; i++){
+         cifra = mlCifra(a[i]);
+          if(cifra > maxCifra) {maxCifra = cifra; ind = i;}   
+     } 		
+} 

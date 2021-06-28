@@ -1,0 +1,34 @@
+//  Для каждой пары введенных целых чисел найти их сумму
+// и произведение двумя способами:  используя одну функцию SumMult;
+//  с помощью двух функций sum(), mult().
+// При вводе a = 0 и b = 0 программа должна завершить работу.
+#include <iostream>
+using namespace std;
+void SumMult(int, int, int&, int&);		// прототип функции SumMult()
+int sum(int x, int y);				// прототип функции sum()
+int mult(int x, int y);				// прототип функции mult()
+int main(){
+   int a, b, r1, r2, s, p;
+   while(1){
+      cout<<"Vvedi a, b"<<"  (a = 0 and b = 0 --->exit)"<<endl;
+      cin>>a>>b;
+      if(!(a || b)) break;
+      SumMult(a, b, r1, r2);			// вызов функции SumMult()
+      cout<<a<<" + "<<b<<" = "<<r1<<endl;
+      cout<<a<<" * "<<b<<" = "<<r2<<endl;
+      s = sum(a, b); 				// вызов sum()
+      p = mult(a, b); 				// вызов mult()
+      cout<<a<<" + "<<b<<" = "<<s<<endl;
+      cout<<a<<" * "<<b<<" = "<<p<<endl;
+   }
+   system("pause");
+}
+void SumMult(int x, int y, int& s, int& p){	 	// функция SumMult()
+   s = x + y;       p = x * y;
+}
+int sum(int x, int y){				// функция sum()
+    return x + y;
+}
+int mult( int x, int y){				// функция mult()
+     return x * y;
+}

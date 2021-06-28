@@ -1,0 +1,59 @@
+#include "pch.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+struct Complex
+{
+	double r;
+	double im;
+};
+
+
+void Sort(Complex *arr, int n)
+{
+	Complex temp;
+	bool exit = false;
+	while (!exit) 
+	{
+		exit = true;
+		for (int i = 0; i < n - 1; i++)
+			if (arr[i].r > arr[i+1].r)
+			{
+				temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1]= temp;
+				exit = false; 
+			}
+	}
+}
+
+void input(Complex * arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter re and im" << endl;
+		cin >> arr[i].r >> arr[i].im;
+	}
+}
+
+void show(Complex *arr, int size)
+{
+	cout << "New array:" << endl;
+	cout << "Re part:   " << "Im part:   " << endl;
+	for (int i = 0; i < size; i++)
+		cout << setw(12) << left << arr[i].r << arr[i].im << endl;
+}
+
+int main()
+{
+	int n;
+	cout << "Enter the amount of numbers" << endl;
+	cin >> n;
+	Complex *arr = new Complex[n];
+	input(arr, n);
+	Sort(arr, n);
+	show(arr, n);
+	delete[] arr;
+}

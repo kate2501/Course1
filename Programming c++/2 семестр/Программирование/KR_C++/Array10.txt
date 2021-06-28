@@ -1,0 +1,71 @@
+#include "pch.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int* FindMax(int*, int);
+int* FindMin(int*, int);
+void Insert(int*, int, int);
+
+int main()
+{
+	int n, k, max, min,*q;
+	cout << "Enter the length of your array:";
+	cin >> n;
+	cout << "Enter k:";
+	cin >> k;
+	int *arr = new int[n + k];
+	cout << "Enter your array:";
+	for (int i = 0; i < n; i++)
+		cin >> *(arr + i);
+	cout << "Your array:";
+	for (int i = 0; i < n; i++)
+		cout << *(arr + i) << ' ';
+	cout << endl;
+	max = *FindMax(arr, n);
+	min = *FindMin(arr, n);
+	cout << max <<endl;
+	cout << min << endl;
+	Insert(arr, n, k);
+}
+
+
+int* FindMax(int *arr, int n)
+{
+	int *p = arr;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(arr + i) >= *p)
+		{
+			p = arr + i;
+		}
+	}
+	return p;
+}
+int* FindMin(int *arr, int n)
+{
+	int *p = arr;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(arr + i) < *p)
+		{
+			p = arr + i;
+		}
+	}
+	return p;
+}
+void Insert(int* arr, int n, int k)
+{
+	int* imax = FindMax(arr, n);
+	int min = *FindMin(arr, n);
+	for (int *pos1 = arr+n + k; pos1 > imax; pos1--)			
+		*pos1 = *(pos1-k);
+	for (int *pos1 = imax + 1; pos1 < imax + k+1; pos1++)
+	{
+		*pos1 = min;
+	}
+	for (int i = 0; i < n + k; i++)
+	{
+		cout << *(arr + i);
+	}
+}

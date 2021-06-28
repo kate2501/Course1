@@ -1,0 +1,24 @@
+//  Автоматические локальные переменные.
+// Cтатические локальные переменные.
+#include <iostream>
+using namespace std;
+void printAvto();			// прототип
+void printStatic();			// прототип
+int main(){
+     cout<<" work printAvto() "<<endl;
+    printAvto();      printAvto();      printAvto();
+     cout<<"\n work printStatic() "<<endl;
+    printStatic();     printStatic();	printStatic();
+    system("pause");
+}
+void printAvto(){			// функция  printAvto()
+   int k = 0;
+    k++;
+   cout<<" k = "<<k<<endl;		// k =1  k = 1  k = 1
+}
+
+void printStatic(){			// // функция  printStatic()
+     static int k = 0;
+    k++;
+   cout<<" k = "<<k<<endl;		// k =1  k = 2  k = 3
+}

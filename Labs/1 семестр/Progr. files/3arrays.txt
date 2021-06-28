@@ -1,0 +1,48 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+const int DIM = 50;
+
+int FindMin(int, int);
+int FindMax(int, int);
+
+int main() 
+{
+	int x[DIM], y[DIM], z[DIM], n;
+	cout << " Enter n: ";		cin >> n;
+	srand(n);
+	for (int i = 0; i < n; i++)
+	{
+		x[i] = rand() % 15 - 5;
+		y[i] = rand() % 15 - 5;
+	}
+	cout << "Array X" << endl;
+	for (int i = 0; i < n; i++) 
+	cout << x[i] << " " ;
+	cout << endl;
+	cout << "Array Y" << endl;
+	for (int i = 0; i < n; i++)
+		cout << y[i] << " ";
+	cout << endl;
+	for (int i = 0; i < n; i++)
+	{
+		if (x[i] + y[i] > 2) z[i] = FindMax(x[i], y[i]);
+		else z[i] = FindMin(x[i], y[i]);
+	}
+	cout << "New array"<<endl;
+	for (int i = 0; i < n; i++)
+		cout << z[i] << " " ;
+	system("pause");
+}
+
+int FindMax(int a, int b)
+{
+	if(a > b) return a;
+	else return b;
+}
+int FindMin(int a, int b)
+{
+	if (a < b) return a;
+	else return b;
+}

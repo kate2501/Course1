@@ -1,0 +1,23 @@
+// Область видимости. Локальные, глобальные переменные.
+#include <iostream>
+using namespace std;
+void print(int);
+int a = 55;				// глобальная переменная a
+int main(){
+   int z = 2;	
+   print(z);
+  // n++;		   		// нельзя!   n определена в функции print()
+  int a =7;
+  cout<<" a = "<<a<<endl;		// a = 7  локальная переменная
+  cout<<" a = "<<::a<<endl;		// a = 55
+   system("pause");
+}
+
+void print(int x){
+   int n = 5 * x;
+  // z++; 				// нельзя! z определена в функции main()
+  cout<<"n = "<<n<<endl;		// n = 10
+}
+
+
+

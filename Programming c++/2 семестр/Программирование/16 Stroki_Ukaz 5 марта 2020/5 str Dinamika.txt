@@ -1,0 +1,18 @@
+// Пример 5.  Создание и удаление динамической строки.
+#include <iostream>
+using namespace std;
+#include <cstring>
+int main(){
+int n;
+cout<<"Vvedi max kol. simvolov v stroke:";	cin>>n;
+char * ps = new char[n + 1];			// выделение памяти для строки
+cin.ignore();					// очищаем поток ввода
+cout<<"vvedi stroku: ";
+gets_s(ps, n+1);				// введём 12345
+puts(ps);					// 12345
+cout<<"&ps = "<<hex<<(int)&ps<<endl;		// адрес указателя
+cout<<"ps = " <<hex<<(int)ps<<endl;		// адрес 0-го символа
+cout<<"ps = " <<hex<<(int)(ps+1)<<endl;		// адрес 1-го символа
+cout<<"ps = "<<hex<<(int)&ps[2]<<endl;		// адрес 2-го символа
+delete [] ps;
+}

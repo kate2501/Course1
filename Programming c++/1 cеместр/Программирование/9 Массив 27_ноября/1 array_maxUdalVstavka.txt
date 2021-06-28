@@ -1,0 +1,67 @@
+//  Одномерный целочисленный массив проинициализировать
+// случайным образом. Вывести массив.
+// 1) Найти максимальный элемент и его индекс.
+// 2) Удалить максимальный элемент.
+// 3) Вставить после максимального элемента заданное число.
+  
+#include <iostream>
+using namespace std;
+const int DIM = 50;
+int funMax(int mas[], int );			// прототип функции funMax()
+void funVvod(int mas[], int );			// прототип функции funVvod()
+void funVivod(int mas[], int );			// прототип функции funVivod()
+void funDel( int mas[], int, int);			// прототип функции funDel()
+void funVstavka(int mas[], int, int, int);		// прототип функции funVstavka()
+
+int main(){
+     int a[DIM];	int n, index, p;
+      cout<<"Enter size massiva: ";   cin>>n;
+      funVvod(a, n);				// ввод массива
+      cout<<"\n\t Isxodni massiv \n";
+      funVivod(a, n);  				// вывод массива
+
+      index = funMax(a, n);			// индекс  max элемента
+      cout<<" max = "<<a[index]<<"    imax = "<<index<<endl; 
+
+      funDel(a, n, index);			// удаление max элемента
+       cout<<"\n   Delete max. Rezult massiv\n";	
+       funVivod(a, n-1);  			// вывод массива
+
+       index = funMax(a, n-1);			// индекс  max элемента
+       cout<<" max = "<<a[index]<<"    imax = "<<index<<endl;  
+
+        cout<<"Vvedi chislo: "; cin>>p;
+       funVstavka(a, n, index, p);			// вставка	после max		 
+       cout<<"\n   Vstavka Rezult massiv\n";
+       funVivod(a, n);  
+       system("pause");
+}
+   
+void funVvod(int mas[], int n){
+     srand(n);
+   //  cout<<"\n\tVvedi  massiv \n";
+     for(int i = 0; i < n; i++)
+         mas[i] = rand() % 15 - 5;	 		// заполнение массива случайными числами
+  // cin>>a[i]; 				// ввод массива
+ }
+void funVivod(int mas[], int k){
+     cout<<"\tMassiv \n";
+     for(int i = 0; i < k; i++)			// вывод массива
+          cout<<mas[i]<<' ';
+     cout<<endl;
+ }
+int funMax(int mas[], int k){
+     int  max = mas[0]; int  imax = 0;		// поиск максимального 
+     for(int i = 0; i < k ; i++)			// элемента  и его индекса
+         if(mas[i] > max){max = mas[i]; imax = i;}
+     return imax;
+}
+void funDel(int mas[], int k, int imax){
+    for(int i =  imax; i < k; i++)			// удаление max элемента
+         mas[i] = mas[i+1];    
+ }   
+void funVstavka(int mas[], int k, int imax, int p){
+     for(int i = k; i > imax; i--)			// вставка числа после max элемента
+          mas[i] = mas[i-1];    				// элементов в массиве станет (n)
+    mas[imax+1] = p;
+ }   

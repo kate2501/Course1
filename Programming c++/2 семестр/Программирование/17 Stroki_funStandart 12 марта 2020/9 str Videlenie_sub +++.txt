@@ -1,0 +1,26 @@
+// Пример 9. Выделение sub в строке. Второй вариант.
+// НЕ обязательно!!!!
+char* subVid1(char* s, int, int);
+int main(){
+	int n;
+	cout << " Vvedi max chislo simvolov v stroke: ";
+	cin >> n;
+	char* str = new char[n + 1];
+	cin.ignore();
+	cout << "Vvedi stroku :";
+	gets_s(str, n + 1);
+	cout << "str = " << str << endl;
+	char* sub = subVid1(str, 2, 4);
+	cout << "main: sub =  " << sub << endl;
+	cout << "main: str = " << str << endl;
+	delete[] sub;
+}
+char* subVid1(char* s, int nach, int kol) {
+	cout << "s = " << s << endl;
+	int sizebuf = strlen(s) + 1;
+	cout << "sizebuf = " << sizebuf << endl;
+	char* sub = new char[strlen(s) + 1];
+	strncpy_s(sub, sizebuf, s + nach, kol);
+	cout << "sub =  " << sub << endl;
+	return sub;
+}

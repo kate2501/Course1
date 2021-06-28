@@ -1,0 +1,34 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+int FindQuan(int [],int,int,int);
+void ReverseOrder(int [],int,int,int);
+
+const int DIM = 50;
+int main() {
+	int a[DIM]; int n,k,u,v;
+	cout << "Enter array's size: ";	cin >> n;
+	srand(n);
+	for (int i = 0; i < n; i++)
+		a[i] = rand() % 15 - rand() % 10;
+	for (int i = 0; i < n; i++)
+		cout << a[i] << " ";
+	cout << "Enter u and v: ";	cin >> u>>v;
+	k = FindQuan(a, n, u, v);
+	ReverseOrder(a, n, u, v);
+	if (k == 0) cout << "No numbers";
+	system("pause");
+}
+int FindQuan(int mas[] , int n, int u, int v)
+{
+	int kol = 0;
+	for (int i = 0; i < n; i++)
+		if (mas[i] >= u && mas[i] <= v) kol++;
+	return kol;
+}
+void ReverseOrder(int mas[], int n, int u, int v)
+{
+	for (int i = n; i >= 0; i--)
+		if (mas[i] >= u && mas[i] <= v) cout << mas[i] << " ";
+}

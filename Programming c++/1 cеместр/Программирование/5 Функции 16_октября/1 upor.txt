@@ -1,0 +1,19 @@
+// Расположить значения целочисленных переменных  а, в, с 
+// в порядке возрастания, используя функцию перестановки значений 
+// двух переменных. Аргументы передавать по ссылке.
+#include <iostream>
+using namespace std;
+void change(int &, int &);			// прототип функции change()
+int main(){
+   int a, b, c;
+   cout<<"Vvedi a, b, c: ";       cin>>a>>b>>c;
+   if(a > b)  change(a, b);			// вызов функции change()
+   if(b > c)  change(b, c);
+   if(a > b)  change(a, b);
+   cout<<" a = " << a << "   b = "<< b <<"   c = "<< c<<endl;
+    system("pause");
+}
+void change(int & x, int & y){			// определение функции change()
+   int temp;
+   temp = x;    x = y;     y = temp;
+}

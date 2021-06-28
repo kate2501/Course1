@@ -1,0 +1,98 @@
+#include "pch.h"
+#include <iostream>
+#include<iomanip>
+using namespace std;
+
+bool check(int* arr, int n)
+{
+	bool flag = true;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(arr+i) >= 0)
+		{
+			flag = false;
+			break;
+		}
+	}
+	return flag;
+}
+
+int find_amount(int *arr, int n)
+{
+	int s = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (*(arr + i) > 0) s++;
+			
+	}
+	return s;
+}
+
+
+void Sort(int **arr, int n, int m)
+{
+	bool exit = false;
+	while (!exit) 
+	{
+		exit = true;
+		for (int i = 0; i < n - 1; i++)
+			if (find_amount(arr[i], m) > find_amount(arr[i + 1], m))
+			{
+				int* p = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = p;
+				exit = false;
+			}
+	}
+}
+
+int main()
+{
+	int n, m;
+	int ** p;
+	cout << "Enter n, m:"; cin >> n >> m;
+	srand(n + m);
+	p = new int*[n];                		
+	for (int i = 0; i < n; i++) 
+	{
+		p[i] = new int[m];                  	 
+		for (int j = 0; j < m; j++)               
+			*(p[i] + j) = rand() % 19 - 12;
+	}
+
+	cout << "Your matrix:  " << endl;
+	for (int i = 0; i < n; i++) 
+	{
+		for (int j = 0; j < m; j++)
+			cout << setw(4) << p[i][j];
+		cout << endl;
+	}
+	cout << endl;
+	
+	for (int i = 0; i < n; i++) 
+	{
+			if (check(p[i], m))
+			{
+				for (int k = i; k < n - 1; k++)
+				{
+					p[k] = p[k + 1];
+				}
+				i--;
+				n--;
+				cout << "yes";
+			}
+	}
+	Sort(p, n, m);
+	cout << "Your matrix:  " << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+			cout << setw(4) << p[i][j];
+		cout << endl;
+	}
+
+	for (int i = 0; i < n; i++)
+		delete[] p[i];          	 
+	delete[] p;                   	
+}

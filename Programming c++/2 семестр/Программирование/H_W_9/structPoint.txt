@@ -1,0 +1,56 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+
+
+struct Point
+{
+	double coords[2];
+	double r;
+};
+
+double findDist(double x, double y)
+{
+	double r = sqrt(x*x + y * y);
+	return r;
+}
+
+void input(Point * arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << "Enter coords" << endl;
+		cin >> arr[i].coords[0] >> arr[i].coords[1];
+		arr[i].r = findDist(arr[i].coords[0], arr[i].coords[1]);
+	}
+}
+
+
+
+int findMaxDist(Point* arr, int size)
+{
+	double max = 0;
+	int imax = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (max < arr[i].r)
+		{
+			max = arr[i].r;
+			imax = i;
+		}
+	}
+	return imax;
+}
+
+int main()
+{
+	int n;
+	cout << "Enter the number of points" << endl;
+	cin >> n;
+	Point *arr = new Point[n];
+	input(arr, n);
+	int imax = findMaxDist(arr, n);
+	cout << "imax = " << imax << endl;
+	cout << "Coords of this point:(" << arr[imax].coords[0] << ';' << arr[imax].coords[1] << ")";
+	delete[] arr;
+}

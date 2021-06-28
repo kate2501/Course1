@@ -1,0 +1,42 @@
+int* find_min(int *arr, int n)
+{
+ int *p = arr;
+ for (int i = 0; i < n; i++)
+ {
+  if (*(arr + i) < *p)
+  {
+   p = arr + i;
+  }
+ }
+ return p;
+}
+ 
+int** delete_row(int **p, int n, int ind)
+{
+ delete[] p[ind];
+ int **tmp = new int*[n - 1];
+ int tmpI = 0;
+ for (int i = 0; i < n; ++i)
+  if (i != ind)
+   tmp[tmpI++] = p[i];
+ delete[] p;
+ p = tmp;
+ return p;
+}
+ 
+void Sort(int **arr, int n, int m)
+{
+ bool exit = false;
+ while (!exit) 
+ {
+  exit = true;
+  for (int i = 0; i < n - 1; i++)
+   if (*find_min(arr[i], m) > *find_min(arr[i + 1], m))
+   {
+    int* p = arr[i];
+    arr[i] = arr[i + 1];
+    arr[i + 1] = p;
+    exit = false;
+   }
+ }
+}

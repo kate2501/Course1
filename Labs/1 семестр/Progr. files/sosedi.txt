@@ -1,0 +1,29 @@
+﻿#include "pch.h"
+#include <iostream>
+using namespace std;
+//Вводится последовательность чисел, есть ли равные соседи
+int main()
+{
+	int n, m = 0;
+	bool flag = false;
+	cout << "Vvedi n" << endl;
+	cin >> m;
+	do
+	{
+
+		cout << "Vvedi n" << endl;
+		cin >> n;
+		if (m == n)
+		{
+			flag = true;
+			break;
+		}
+		m = n;
+	} while (n);
+	if (flag == false)
+	{
+		cout << "\nno" << endl;
+	}
+	else cout << "\nyes" << endl;
+	system("pause");
+}

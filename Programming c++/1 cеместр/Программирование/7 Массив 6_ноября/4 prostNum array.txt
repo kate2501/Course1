@@ -1,0 +1,43 @@
+// Дан одномерный массив mas.  Определить, сколько простых чисел в массиве. 
+// Если число простое, найти его младшую цифру.  Использовать две функции.
+#include <iostream>
+using namespace std;
+int prost(int x);
+int mlCifra(int x);
+const int DIM = 40; 
+int main(){
+int mas[DIM];
+   int n,  pr, cifra,  kol = 0;
+   cout<<" Enter size massiva n: ";   cin>>n;
+   cout<<"\nEnter massiv:"<<endl;
+  for(int i = 0; i < n; i++)		// ввод массива
+      cin>>mas[i];
+   cout<<"\nIsxodni massiv\n";		// вывод массива
+   for(int i = 0; i < n; i++)
+        cout<<mas[i]<< ' ';
+   cout<<endl;
+    for(int i = 0; i < n; i++){
+         pr = prost(mas[i]);
+         if(pr == 1){
+                 kol++;
+                 cifra = mlCifra(mas[i]);
+                 cout<<mas[i]<<" - chislo prostoe. cifra = "<<cifra<<endl;
+            }
+            else
+                cout<<mas[i]<<" - chislo no prostoe"<<endl;
+      } 
+     cout<<" kol prostix chisel v massive = "<<kol<<endl;
+     system("pause");
+  }
+ int prost(int x){		// функция prost() определяет, простое число или нет
+ int k = x / 2;
+ int flag = 1;
+ for(int j = 2; j <=k; j++)
+   if(x % j == 0){flag = 0 ;break;}
+  return flag;
+}
+int mlCifra(int x){		// функция cifra() находит младшую цифру
+ int c;
+ c = x % 10;
+  return c;
+}

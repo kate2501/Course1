@@ -1,0 +1,60 @@
+//  Дан одномерный целочисленный массив.
+// Отсортировать массив по не убыванию методом "пузырька"
+#include <iostream>
+using namespace std;
+void vvodMas(int [], int );
+void vivodMas(int [], int );	
+void sortMas(int [], int);
+void sortMas_effect(int [], int);
+const int DIM = 50; 
+int main(){
+   int a[DIM], n;
+   cout<<" Enter size massiva n: ";      cin>>n;
+   vvodMas(a, n);
+   cout<<"\nIsxodni massiv\n";			// вывод массива
+   vivodMas(a, n);  
+   sortMas(a, n);
+   cout<<"\nOtsortirovanni massiv\n";
+   vivodMas(a, n);  
+   vvodMas(a, n);
+   cout<<"\nIsxodni massiv\n";			// вывод массива
+   vivodMas(a, n);  
+   sortMas_effect(a, n);
+   cout<<"\nOtsortirovanni massiv\n";
+   vivodMas(a, n);  
+   system("pause");
+}
+void vivodMas(int mas[], int n){			// функция вывода массива
+     for(int i = 0; i < n; i++)			
+          cout<<mas[i]<<' ';
+     cout<<endl;
+ }
+void vvodMas(int mas[], int n){
+     srand(n);
+   //  cout<<"\n\tVvedi  massiv \n";
+     for(int i = 0; i < n; i++)
+         mas[i] = rand() % 15 - 5;	 		// заполнение массива случайными числами
+  // cin>>mas[i]; 				// ввод массива
+ }
+void sortMas(int mas[], int n){			// функция сортировки массива
+     int x;					// вариат1 - не эффект. сортировка
+     for(int i = 1; i < n; i++)			
+        for(int j = 0; j < n-i; j++)
+           if(mas[j] > mas[j+1])
+           {
+                x = mas[j];	mas[j] = mas[j+1];	mas[j+1] = x; 
+            } 
+}
+void sortMas_effect(int mas[], int n){		// функция сортировки массива
+     int flag = 1;     int x, i = 1;			// вариат2 -  эффект. сортировка
+     while(flag){
+        flag = 0;			
+        for(int j = 0; j < n-i; j++)
+           if(mas[j] > mas[j+1])
+           {
+                x = mas[j];	mas[j] = mas[j+1];	mas[j+1] = x;
+                 flag = 1; 
+            } 
+            i++;
+      }
+  } 

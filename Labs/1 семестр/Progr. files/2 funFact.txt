@@ -1,0 +1,18 @@
+//  Вычисление n! оформить в виде функции.
+# include <iostream>
+using namespace std;
+void fact(int);
+int main(){
+  fact(-4);	  fact(4);	  fact(6);
+  system("pause");
+}
+void fact(int n){
+  if(n < 1){
+       cout<< n<<" -- nocorrect number" <<endl;
+       return;
+  }
+  int result = 1;
+  for(int i = 1; i <= n; i++)
+       result = result * i;
+   cout<<"Factorial of "<<n <<" is equal to "<<result<<endl;
+}

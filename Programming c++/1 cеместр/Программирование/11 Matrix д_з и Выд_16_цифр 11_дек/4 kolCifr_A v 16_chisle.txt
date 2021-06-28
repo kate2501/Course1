@@ -1,0 +1,20 @@
+// Представить 10-ое число в 16-ой с/с, используя 
+// арифметические операции % и /.
+#include <iostream>
+using namespace std;
+int main() {
+   int n;
+   int cifra, kol = 0;
+   //n = 0xA23A3; 
+    cout<<"Vvedi n  0XA2A3: ";
+    cin>>hex>>n;			// вводим, например, 0xA2A3
+    cout<<"n = "<<n<<"  "<<hex<<n<<endl;
+    while (n){
+        cifra = n % 16; 
+        cout<<hex<<cifra;
+        if(cifra == 10) kol++; 		// или if(cifra == 0xA) kol++; 		
+         n = n /16;
+    }
+    cout<<"\nkol = "<<dec<<kol<<endl;
+    system("pause");
+}

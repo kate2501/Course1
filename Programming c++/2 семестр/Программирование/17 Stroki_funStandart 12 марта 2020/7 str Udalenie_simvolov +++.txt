@@ -1,0 +1,27 @@
+// Пример 7. Удаление символов в строке.
+// НЕ обязательно!!!
+void subDel(char *, int, int);
+int main(){
+  int n;
+  cout<<" Vvedi max chislo simvolov v stroke: ";		cin>>n;
+  char* str = new char[n+1];
+  cin.ignore();
+  cout<<"Vvedi stroku :";
+  gets_s(str, n+1);
+  cout << "str = " << str << endl;
+  subDel(str, 2, 4);	// начиная с str[2] символа, удалили 4 символa
+  cout<<"main: str = "<<str<<endl;
+  delete [] str;
+}
+void subDel (char* s, int nach, int kol){
+  int sizebuf = strlen(s)+1;
+  cout << "sizebuf = " << sizebuf << endl;
+  char* temp = new char[strlen(s)+1];
+  cout << "s = " << s << endl;
+  strcpy_s(temp, sizebuf, s + nach + kol);
+  cout << "temp = " << temp << endl;
+  s[nach] = '\0';
+  cout << "s = " << s << endl;
+  strcat_s(s, sizebuf, temp);
+  cout << "s = " << s << endl;
+}

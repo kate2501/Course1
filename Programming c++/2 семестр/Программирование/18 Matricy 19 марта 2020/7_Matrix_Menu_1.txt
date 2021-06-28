@@ -1,0 +1,52 @@
+// Пример 7. Память для двумерного динамического массив
+// выделяется в main() и адрес её передаётся в функци init(), vivod(),
+// delMemory(). Используется меню.
+#include <iostream>
+using namespace std;
+void init(int**, int, int);		// прототип функции init()
+void vivod(int**, int, int);		// прототип функции vivod()
+void delMemory(int**, int, int);	// прототип функции delMemory()
+int main() {
+	int m, n, punkt;
+	cout << "Vvedi  chislo strok: ";			cin >> n;
+	cout << "Vvedi  chislo elementov v stroke: ";	cin >> m;
+
+	int** a = new int* [n];				// выделение памяти
+	for (int i = 0; i < n; i++) {
+		a[i] = new int[m];
+	}
+	while (1) {
+		cout << "Vvedite nomer punkta:\n\n";
+		cout << "1:   init()\n";
+		cout << "2:   vivod()\n";
+		cout << "3:   delMemory()\n";
+		cout << "4:    exit()\n";
+		cout << "You change: ";	 cin >> punkt;
+		switch (punkt) {
+		case  1:	init(a, n, m);			break;
+		case  2:	cout << "Matrix = " << endl;
+			vivod(a, n, m);			break;
+		case  3:	delMemory(a, n, m);		break;
+		case  4:	cout << "Exit!";	exit(1);	break;
+		}
+	}
+}
+void init(int** x, int n, int m) {			// функция init()
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < m; j++)
+			x[i][j] = rand() % 25 - 10;
+}
+void vivod(int** x, int n, int m) {			// функция vivod() 
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout.width(5);
+			cout << x[i][j];
+		}
+		cout << endl;
+	}
+}
+void delMemory(int** x, int n, int m) {		// функция delMemory() 
+	for (int i = 0; i < n; i++)
+		delete[] x[i];
+	delete[] x;
+}

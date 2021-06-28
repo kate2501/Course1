@@ -1,0 +1,39 @@
+/*
+3. Дан массив. Найти 2 (не)равных мин элемента за один раз.
+*/
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+const int DIM = 50;
+
+int main () {
+
+  int array[DIM], n; 
+  cout<<"Vvedite razmer massiva: ";   
+  cin>>n;
+  cout <<"\n";
+  cout<<"\n\tVvedite  massiv: \n";
+  for(int i = 0; i < n; i++)
+    cin>>array[i];
+  cout <<"\n"; 
+
+  int min1 = array [0], min2 = array [0] ;
+  for (int i = 0; i < n-1; i++){
+    if (array[i+1] < min1){
+      min2 = min1;
+      
+      min1 = array [i+1];
+
+    }
+
+    /* Неравных:
+    else if (array[i+1] < min2 && array[i+1] != min1){
+    */  
+    else if (array[i+1] < min2){
+      min2 = array[i+1];
+    }
+    cout << min1 << " " << min2 << endl;
+  }
+  cout << min1 << " " << min2;
+}

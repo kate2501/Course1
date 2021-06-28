@@ -1,0 +1,23 @@
+﻿#include "pch.h"
+#include <iostream>
+using namespace std;
+int main() {
+	int n, sum = 0, kol = 0;;
+	cout << " enter n = ";
+	cin >> n;
+
+	while (n )
+	{
+		sum += n % 10;
+		n /= 10;
+		kol++;
+	}
+	cout << "sum = " << sum << endl;
+
+	cout << "kol=" << kol << endl;
+	
+}
+
+
+
+
